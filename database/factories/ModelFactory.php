@@ -1,19 +1,19 @@
 <?php
 
-namespace VendorName\Skeleton\Database\Factories;
+declare(strict_types=1);
+
+namespace Maartenpaauw\Filament\OpeningHours\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Maartenpaauw\Filament\OpeningHours\Models\OpeningHours;
 
-/*
-class ModelFactory extends Factory
+final class OpeningHourFactory extends Factory
 {
-    protected $model = YourModel::class;
+    protected $model = OpeningHours::class;
 
-    public function definition()
+    public function definition(): array
     {
-        return [
-
-        ];
+        return [];
     }
 }
-*/
+

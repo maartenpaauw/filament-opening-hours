@@ -1,0 +1,27 @@
+<?php
+
+declare(strict_types=1);
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::create('filament_opening_hours', static function (Blueprint $table): void {
+            $table->id();
+            $table->nullableMorphs('openable');
+            $table->json('monday');
+            $table->json('tuesday');
+            $table->json('wednesday');
+            $table->json('thursday');
+            $table->json('friday');
+            $table->json('saturday');
+            $table->json('sunday');
+            $table->timestamps();
+            $table->softDeletes();
+        });
+    }
+};

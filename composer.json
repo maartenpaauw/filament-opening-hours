@@ -1,31 +1,30 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "maartenpaauw/filament-opening-hours",
+    "description": "This is my package filament-opening-hours",
     "keywords": [
-        ":vendor_name",
+        "maartenpaauw",
         "laravel",
-        ":package_slug"
+        "filament-opening-hours"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/maartenpaauw/filament-opening-hours",
     "support": {
-        "issues": "https://github.com/:vendor_slug/:package_slug/issues",
-        "source": "https://github.com/:vendor_slug/:package_slug"
+        "issues": "https://github.com/maartenpaauw/filament-opening-hours/issues",
+        "source": "https://github.com/maartenpaauw/filament-opening-hours"
     },
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Maarten Paauw",
+            "email": "maartenpaauw@gmail.com",
             "role": "Developer"
         }
     ],
     "require": {
         "php": "^8.1",
         "filament/filament": "^3.0",
-        "filament/forms": "^3.0",
-        "filament/tables": "^3.0",
+        "illuminate/contracts": "^10.0",
         "spatie/laravel-package-tools": "^1.15.0",
-        "illuminate/contracts": "^10.0"
+        "spatie/opening-hours": "^2.41"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
@@ -42,13 +41,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src/",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
+            "Maartenpaauw\\Filament\\OpeningHours\\": "src/",
+            "Maartenpaauw\\Filament\\OpeningHours\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests/"
+            "Maartenpaauw\\Filament\\OpeningHours\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -68,11 +67,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
-            ],
-            "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
-            }
+                "Maartenpaauw\\Filament\\OpeningHours\\FilamentOpeningHoursServiceProvider"
+            ]
         }
     },
     "minimum-stability": "dev",
