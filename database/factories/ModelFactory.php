@@ -16,4 +16,3 @@ final class OpeningHourFactory extends Factory
         return [];
     }
 }
-

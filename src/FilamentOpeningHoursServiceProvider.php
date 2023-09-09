@@ -8,10 +8,10 @@ use Filament\Support\Assets\Asset;
 use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentIcon;
 use Illuminate\Filesystem\Filesystem;
+use Maartenpaauw\Filament\OpeningHours\Commands\FilamentOpeningHoursCommand;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Maartenpaauw\Filament\OpeningHours\Commands\FilamentOpeningHoursCommand;
 
 final class FilamentOpeningHoursServiceProvider extends PackageServiceProvider
 {
@@ -46,7 +46,7 @@ final class FilamentOpeningHoursServiceProvider extends PackageServiceProvider
         }
 
         if (file_exists($package->basePath('/../resources/views'))) {
-            $package->hasViews(static::$viewNamespace);
+            $package->hasViews(self::$viewNamespace);
         }
     }
 
