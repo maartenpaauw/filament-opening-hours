@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Maartenpaauw\Filament\OpeningHours\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Maartenpaauw\Filament\OpeningHours\Models\Day;
 use Maartenpaauw\Filament\OpeningHours\Enums;
+use Maartenpaauw\Filament\OpeningHours\Models\Day;
 
 final class DayFactory extends Factory
 {
@@ -20,4 +20,3 @@ final class DayFactory extends Factory
         ];
     }
 }
-
