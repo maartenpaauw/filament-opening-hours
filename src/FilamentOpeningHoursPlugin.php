@@ -22,7 +22,7 @@ final class FilamentOpeningHoursPlugin implements Plugin
 
     public function boot(Panel $panel): void
     {
-        //
+        // noop
     }
 
     public static function make(): FilamentOpeningHoursPlugin

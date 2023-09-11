@@ -1,6 +1,5 @@
 <?php
 
-// config for Maartenpaauw\Filament\OpeningHours/FilamentOpeningHours
-return [
+declare(strict_types=1);
 
-];
+return [];

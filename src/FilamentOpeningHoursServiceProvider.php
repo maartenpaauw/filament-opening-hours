@@ -94,9 +94,7 @@ final class FilamentOpeningHoursServiceProvider extends PackageServiceProvider
      */
     protected function getCommands(): array
     {
-        return [
-            FilamentOpeningHoursCommand::class,
-        ];
+        return [];
     }
 
     /**
@@ -130,6 +128,8 @@ final class FilamentOpeningHoursServiceProvider extends PackageServiceProvider
     {
         return [
             'create_opening_hours_table',
+            'create_opening_hours_days_table',
+            'create_opening_hours_time_ranges_table',
         ];
     }
 }
