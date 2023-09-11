@@ -25,11 +25,11 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Maartenpaauw\Filament\OpeningHours\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
+            static fn (string $modelName): string => 'Maartenpaauw\Filament\OpeningHours\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
         );
     }
 
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
         return [
             ActionsServiceProvider::class,
@@ -48,13 +48,19 @@ class TestCase extends Orchestra
         ];
     }
 
-    public function getEnvironmentSetUp($app)
+    public function getEnvironmentSetUp($app): void
     {
         config()->set('database.default', 'testing');
 
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_filament-opening-hours_table.php.stub';
-        $migration->up();
-        */
+        $migrations = [
+            'create_opening_hours_days_table',
+            'create_opening_hours_table',
+            'create_opening_hours_time_ranges_table',
+        ];
+
+        foreach ($migrations as $file) {
+            $migration = include __DIR__."/../database/migrations/$file.php.stub";
+            $migration->up();
+        }
     }
 }

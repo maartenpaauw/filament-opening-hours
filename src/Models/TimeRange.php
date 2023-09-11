@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @property DateTimeInterface $start
  * @property DateTimeInterface $end
+ *
+ * @property-read string $notation
  */
 final class TimeRange extends Model
 {
