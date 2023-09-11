@@ -59,7 +59,7 @@ class TestCase extends Orchestra
         ];
 
         foreach ($migrations as $file) {
-            $migration = include __DIR__."/../database/migrations/$file.php.stub";
+            $migration = include __DIR__ . "/../database/migrations/$file.php.stub";
             $migration->up();
         }
     }
