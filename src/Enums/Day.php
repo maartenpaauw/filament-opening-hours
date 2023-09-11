@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Maartenpaauw\Filament\OpeningHours\Enums;
 
-enum Day: string
+use Filament\Support\Contracts\HasLabel;
+
+enum Day: string implements HasLabel
 {
     case Monday = 'monday';
     case Tuesday = 'tuesday';
@@ -13,4 +15,9 @@ enum Day: string
     case Friday = 'friday';
     case Saturday = 'saturday';
     case Sunday = 'sunday';
+
+    public function getLabel(): ?string
+    {
+        return __($this->value);
+    }
 }
