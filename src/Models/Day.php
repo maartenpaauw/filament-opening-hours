@@ -6,6 +6,7 @@ namespace Maartenpaauw\Filament\OpeningHours\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
 use Maartenpaauw\Filament\OpeningHours\Enums;
 
@@ -15,11 +16,15 @@ use Maartenpaauw\Filament\OpeningHours\Enums;
  */
 final class Day extends Model
 {
+    use SoftDeletes;
+
     protected $table = 'filament_opening_hours_days';
 
     protected $fillable = ['day'];
 
     protected $casts = [
+        'id' => 'int',
+        'opening_hour_id' => 'int',
         'day' => Enums\Day::class,
     ];
 

@@ -16,6 +16,13 @@ final class OpeningHour extends Model
 
     protected $fillable = ['name'];
 
+    protected $casts = [
+        'id' => 'int',
+        'openable_type' => 'string',
+        'openable_id' => 'int',
+        'name' => 'string',
+    ];
+
     protected $with = ['days'];
 
     public function days(): HasMany
