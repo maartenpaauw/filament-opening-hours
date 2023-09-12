@@ -11,7 +11,7 @@ use Illuminate\Support\Collection;
 use Maartenpaauw\Filament\OpeningHours\Enums;
 
 /**
- * @property string $day
+ * @property Enums\Day $day
  * @property Collection<array-key, TimeRange> $timeRanges
  */
 final class Day extends Model
