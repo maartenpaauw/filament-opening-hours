@@ -52,10 +52,12 @@ final class OpeningHourResource extends Resource
                             ->schema([
                                 TimePicker::make('start')
                                     ->translateLabel()
+                                    ->inlineLabel()
                                     ->seconds(false)
                                     ->required(),
                                 TimePicker::make('end')
                                     ->translateLabel()
+                                    ->inlineLabel()
                                     ->seconds(false)
                                     ->required(),
                             ]),
