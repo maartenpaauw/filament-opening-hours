@@ -29,6 +29,8 @@ final class TimeRange extends Model
         'end' => 'datetime',
     ];
 
+    protected $appends = ['notation'];
+
     public function notation(): Attribute
     {
         return Attribute::get(function (): string {
