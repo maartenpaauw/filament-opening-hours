@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 return [
-    'add_day' => 'Dag toevoegen',
     'add_time_range' => 'Tijdsbereik toevoegen',
     'day' => 'Dag',
     'days' => 'Dagen',

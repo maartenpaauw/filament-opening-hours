@@ -18,6 +18,16 @@ enum Day: string implements HasLabel
 
     public function getLabel(): ?string
     {
-        return __($this->name);
+        return $this->label();
+    }
+
+    public function label(): string
+    {
+        return trans("filament-opening-hours::days.$this->value");
+    }
+
+    public function relationship(): string
+    {
+        return $this->value;
     }
 }

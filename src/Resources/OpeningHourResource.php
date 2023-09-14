@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Maartenpaauw\Filament\OpeningHours\Resources;
 
 use Filament\Forms\Components\Repeater;
-use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\TimePicker;
 use Filament\Forms\Form;
@@ -37,46 +37,50 @@ final class OpeningHourResource extends Resource
                     ->required()
                     ->minLength(1)
                     ->maxLength(255),
-                Repeater::make('days')
-                    ->label('filament-opening-hours::labels.days')
-                    ->addActionLabel(trans('filament-opening-hours::labels.add_day'))
-                    ->translateLabel()
-                    ->relationship()
-                    ->minItems(1)
-                    ->defaultItems(7)
-                    ->maxItems(7)
-                    ->addable(false)
-                    ->deletable(false)
-                    ->schema([
-                        Select::make('day')
-                            ->label('filament-opening-hours::labels.day')
-                            ->translateLabel()
-                            ->required()
-                            ->options(Day::class),
-                        Repeater::make('timeRanges')
-                            ->label('filament-opening-hours::labels.time_ranges')
-                            ->addActionLabel(trans('filament-opening-hours::labels.add_time_range'))
-                            ->translateLabel()
-                            ->relationship()
-                            ->required()
-                            ->columns(2)
-                            ->schema([
-                                TimePicker::make('start')
-                                    ->label('filament-opening-hours::labels.start')
-                                    ->translateLabel()
-                                    ->inlineLabel()
-                                    ->seconds(false)
-                                    ->required(),
-                                TimePicker::make('end')
-                                    ->label('filament-opening-hours::labels.end')
-                                    ->translateLabel()
-                                    ->inlineLabel()
-                                    ->seconds(false)
-                                    ->required(),
-                            ]),
-                    ]),
+                ...self::daySchema(Day::Monday),
+                ...self::daySchema(Day::Tuesday),
+                ...self::daySchema(Day::Wednesday),
+                ...self::daySchema(Day::Thursday),
+                ...self::daySchema(Day::Friday),
+                ...self::daySchema(Day::Saturday),
+                ...self::daySchema(Day::Sunday),
             ])
             ->columns(1);
+    }
+
+    private static function daySchema(Day $day): array
+    {
+        return [
+            Section::make($day->label())
+                ->relationship($day->relationship())
+                ->mutateRelationshipDataBeforeCreateUsing(static fn () => [
+                    'day' => $day,
+                ])
+                ->schema([
+                    Repeater::make('timeRanges')
+                        ->label('filament-opening-hours::labels.time_ranges')
+                        ->addActionLabel(trans('filament-opening-hours::labels.add_time_range'))
+                        ->translateLabel()
+                        ->relationship()
+                        ->defaultItems(1)
+                        ->minItems(0)
+                        ->columns(2)
+                        ->schema([
+                            TimePicker::make('start')
+                                ->label('filament-opening-hours::labels.start')
+                                ->translateLabel()
+                                ->inlineLabel()
+                                ->seconds(false)
+                                ->required(),
+                            TimePicker::make('end')
+                                ->label('filament-opening-hours::labels.end')
+                                ->translateLabel()
+                                ->inlineLabel()
+                                ->seconds(false)
+                                ->required(),
+                        ]),
+                ]),
+        ];
     }
 
     public static function table(Table $table): Table
