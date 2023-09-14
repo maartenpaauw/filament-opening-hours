@@ -42,6 +42,11 @@ final class OpeningHourResource extends Resource
                     ->addActionLabel(trans('filament-opening-hours::labels.add_day'))
                     ->translateLabel()
                     ->relationship()
+                    ->minItems(1)
+                    ->defaultItems(7)
+                    ->maxItems(7)
+                    ->addable(false)
+                    ->deletable(false)
                     ->schema([
                         Select::make('day')
                             ->label('filament-opening-hours::labels.day')
