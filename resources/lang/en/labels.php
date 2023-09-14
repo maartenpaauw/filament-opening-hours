@@ -3,10 +3,12 @@
 declare(strict_types=1);
 
 return [
+    'add_day' => 'Add day',
+    'add_time_range' => 'Add time range',
     'day' => 'Day',
     'days' => 'Days',
-    'name' => 'Name',
-    'time_ranges' => 'Time ranges',
-    'start' => 'Start',
     'end' => 'End',
+    'name' => 'Name',
+    'start' => 'Start',
+    'time_ranges' => 'Time ranges',
 ];

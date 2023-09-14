@@ -18,6 +18,6 @@ enum Day: string implements HasLabel
 
     public function getLabel(): ?string
     {
-        return __($this->value);
+        return __($this->name);
     }
 }

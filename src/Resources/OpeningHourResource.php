@@ -39,6 +39,7 @@ final class OpeningHourResource extends Resource
                     ->maxLength(255),
                 Repeater::make('days')
                     ->label('filament-opening-hours::labels.days')
+                    ->addActionLabel(trans('filament-opening-hours::labels.add_day'))
                     ->translateLabel()
                     ->relationship()
                     ->schema([
@@ -49,6 +50,7 @@ final class OpeningHourResource extends Resource
                             ->options(Day::class),
                         Repeater::make('timeRanges')
                             ->label('filament-opening-hours::labels.time_ranges')
+                            ->addActionLabel(trans('filament-opening-hours::labels.add_time_range'))
                             ->translateLabel()
                             ->relationship()
                             ->required()
