@@ -21,7 +21,7 @@ final class FilamentOpeningHoursServiceProvider extends PackageServiceProvider
     public function configurePackage(Package $package): void
     {
         $package->name(self::$name)
-            ->hasCommands($this->getCommands())
+            ->hasTranslations()
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
                     ->publishConfigFile()
@@ -38,10 +38,6 @@ final class FilamentOpeningHoursServiceProvider extends PackageServiceProvider
 
         if (file_exists($package->basePath('/../database/migrations'))) {
             $package->hasMigrations($this->getMigrations());
-        }
-
-        if (file_exists($package->basePath('/../resources/lang'))) {
-            $package->hasTranslations();
         }
 
         if (file_exists($package->basePath('/../resources/views'))) {
@@ -84,14 +80,6 @@ final class FilamentOpeningHoursServiceProvider extends PackageServiceProvider
      * @return array<Asset>
      */
     protected function getAssets(): array
-    {
-        return [];
-    }
-
-    /**
-     * @return array<class-string>
-     */
-    protected function getCommands(): array
     {
         return [];
     }

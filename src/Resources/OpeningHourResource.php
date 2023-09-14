@@ -32,30 +32,36 @@ final class OpeningHourResource extends Resource
         return $form
             ->schema([
                 TextInput::make('name')
+                    ->label('filament-opening-hours::labels.name')
                     ->translateLabel()
                     ->required()
                     ->minLength(1)
                     ->maxLength(255),
                 Repeater::make('days')
-                    ->relationship()
+                    ->label('filament-opening-hours::labels.days')
                     ->translateLabel()
+                    ->relationship()
                     ->schema([
                         Select::make('day')
+                            ->label('filament-opening-hours::labels.day')
                             ->translateLabel()
                             ->required()
                             ->options(Day::class),
                         Repeater::make('timeRanges')
+                            ->label('filament-opening-hours::labels.time_ranges')
                             ->translateLabel()
                             ->relationship()
                             ->required()
                             ->columns(2)
                             ->schema([
                                 TimePicker::make('start')
+                                    ->label('filament-opening-hours::labels.start')
                                     ->translateLabel()
                                     ->inlineLabel()
                                     ->seconds(false)
                                     ->required(),
                                 TimePicker::make('end')
+                                    ->label('filament-opening-hours::labels.end')
                                     ->translateLabel()
                                     ->inlineLabel()
                                     ->seconds(false)
