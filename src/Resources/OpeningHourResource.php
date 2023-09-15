@@ -33,9 +33,11 @@ final class OpeningHourResource extends Resource
     {
         return $form
             ->schema([
-                Tabs::make()
+                Tabs::make('opening-hours')
+                    ->id('opening-hours')
                     ->tabs([
                         Tab::make('general')
+                            ->id('general')
                             ->label('filament-opening-hours::labels.general')
                             ->translateLabel()
                             ->icon('heroicon-o-building-storefront')
@@ -54,7 +56,8 @@ final class OpeningHourResource extends Resource
                         self::dayTab(Day::Friday),
                         self::dayTab(Day::Saturday),
                         self::dayTab(Day::Sunday),
-                    ]),
+                    ])
+                    ->persistTabInQueryString(),
             ])
             ->columns(1);
     }
@@ -63,6 +66,7 @@ final class OpeningHourResource extends Resource
     {
         return Tab::make($day->label())
             ->label($day->label())
+            ->id($day->toString())
             ->translateLabel()
             ->icon('heroicon-o-clock')
             ->schema([
@@ -83,7 +87,7 @@ final class OpeningHourResource extends Resource
                             ->addActionLabel(trans('filament-opening-hours::labels.add_time_range'))
                             ->translateLabel()
                             ->relationship()
-                            ->defaultItems(1)
+                            ->defaultItems(0)
                             ->minItems(0)
                             ->schema([
                                 TextInput::make('description')
