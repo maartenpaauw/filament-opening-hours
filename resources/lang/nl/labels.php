@@ -8,6 +8,7 @@ return [
     'days' => 'Dagen',
     'description' => 'Description',
     'end' => 'Eind',
+    'general' => 'Algemeen',
     'name' => 'Naam',
     'start' => 'Start',
     'time_ranges' => 'Tijdsbereiken',

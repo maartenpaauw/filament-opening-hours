@@ -8,6 +8,7 @@ return [
     'days' => 'Days',
     'description' => 'Description',
     'end' => 'End',
+    'general' => 'General',
     'name' => 'Name',
     'start' => 'Start',
     'time_ranges' => 'Time ranges',
