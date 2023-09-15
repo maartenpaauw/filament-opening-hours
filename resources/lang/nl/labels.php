@@ -6,7 +6,7 @@ return [
     'add_time_range' => 'Tijdsbereik toevoegen',
     'day' => 'Dag',
     'days' => 'Dagen',
-    'description' => 'Description',
+    'description' => 'Omschrijving',
     'end' => 'Eind',
     'general' => 'Algemeen',
     'name' => 'Naam',
