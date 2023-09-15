@@ -30,4 +30,9 @@ enum Day: string implements HasLabel
     {
         return $this->value;
     }
+
+    public function toString(): string
+    {
+        return $this->value;
+    }
 }

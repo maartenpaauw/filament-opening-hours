@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Maartenpaauw\Filament\OpeningHours\Enums;
+use Spatie\OpeningHours\OpeningHours;
 
 final class OpeningHour extends Model
 {
@@ -76,5 +77,25 @@ final class OpeningHour extends Model
                 ['id' => 'MAX'],
                 static fn (Builder $query): Builder => $query->where('day', '=', $day),
             );
+    }
+
+    public function openingHours(): OpeningHours
+    {
+        return OpeningHours::create(
+            $this->days()
+                ->get()
+                ->mapWithKeys(static fn (Day $day): array => [
+                    $day->day->toString() => array_filter([
+                        'data' => $day->description,
+                        'hours' => $day->timeRanges
+                            ->map(static fn (TimeRange $timeRange): array => array_filter([
+                                'data' => $timeRange->description,
+                                'hours' => $timeRange->notation,
+                            ]))
+                            ->all(),
+                    ]),
+                ])
+                ->all(),
+        );
     }
 }
