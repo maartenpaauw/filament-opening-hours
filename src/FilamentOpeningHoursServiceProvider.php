@@ -10,7 +10,6 @@ use Filament\Support\Facades\FilamentIcon;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Filesystem\Filesystem;
 use Maartenpaauw\Filament\OpeningHours\Models\Day;
-use Maartenpaauw\Filament\OpeningHours\Models\Exception;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
