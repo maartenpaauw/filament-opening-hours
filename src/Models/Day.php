@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace Maartenpaauw\Filament\OpeningHours\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Collection;
 use Maartenpaauw\Filament\OpeningHours\Enums;
 
@@ -17,9 +16,7 @@ use Maartenpaauw\Filament\OpeningHours\Enums;
  */
 final class Day extends Model
 {
-    use SoftDeletes;
-
-    protected $table = 'filament_opening_hours_days';
+    protected $table = 'opening_hours_days';
 
     protected $fillable = ['day', 'description'];
 
@@ -27,13 +24,14 @@ final class Day extends Model
         'id' => 'int',
         'opening_hour_id' => 'int',
         'day' => Enums\Day::class,
+        'description' => 'string',
     ];
 
     protected $with = ['timeRanges'];
 
-    public function timeRanges(): HasMany
+    public function timeRanges(): MorphMany
     {
-        return $this->hasMany(TimeRange::class)
+        return $this->morphMany(TimeRange::class, 'time_rangeable')
             ->orderBy('start')
             ->orderBy('end');
     }

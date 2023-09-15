@@ -8,15 +8,12 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Maartenpaauw\Filament\OpeningHours\Enums;
 use Spatie\OpeningHours\OpeningHours;
 
 final class OpeningHour extends Model
 {
-    use SoftDeletes;
-
-    protected $table = 'filament_opening_hours';
+    protected $table = 'opening_hours';
 
     protected $fillable = ['name'];
 

@@ -10,12 +10,11 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('filament_opening_hours', static function (Blueprint $table): void {
+        Schema::create('opening_hours', static function (Blueprint $table): void {
             $table->id();
             $table->nullableMorphs('openable');
             $table->string('name');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 };

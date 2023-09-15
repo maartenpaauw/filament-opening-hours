@@ -7,7 +7,6 @@ namespace Maartenpaauw\Filament\OpeningHours\Models;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @property DateTimeInterface $start
@@ -17,9 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 final class TimeRange extends Model
 {
-    use SoftDeletes;
-
-    protected $table = 'filament_opening_hours_time_ranges';
+    protected $table = 'opening_hours_time_ranges';
 
     protected $fillable = ['start', 'end', 'description'];
 
@@ -28,6 +25,7 @@ final class TimeRange extends Model
         'day_id' => 'int',
         'start' => 'datetime',
         'end' => 'datetime',
+        'description' => 'string',
     ];
 
     protected $appends = ['notation'];

@@ -7,7 +7,10 @@ namespace Maartenpaauw\Filament\OpeningHours;
 use Filament\Support\Assets\Asset;
 use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentIcon;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Filesystem\Filesystem;
+use Maartenpaauw\Filament\OpeningHours\Models\Day;
+use Maartenpaauw\Filament\OpeningHours\Models\Exception;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -43,6 +46,13 @@ final class FilamentOpeningHoursServiceProvider extends PackageServiceProvider
         if (file_exists($package->basePath('/../resources/views'))) {
             $package->hasViews(self::$viewNamespace);
         }
+    }
+
+    public function packageRegistered(): void
+    {
+        Relation::morphMap([
+            'day' => Day::class,
+        ]);
     }
 
     public function packageBooted(): void
