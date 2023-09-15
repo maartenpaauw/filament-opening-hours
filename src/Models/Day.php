@@ -12,6 +12,7 @@ use Maartenpaauw\Filament\OpeningHours\Enums;
 
 /**
  * @property Enums\Day $day
+ * @property string $description
  * @property Collection<array-key, TimeRange> $timeRanges
  */
 final class Day extends Model
@@ -20,7 +21,7 @@ final class Day extends Model
 
     protected $table = 'filament_opening_hours_days';
 
-    protected $fillable = ['day'];
+    protected $fillable = ['day', 'description'];
 
     protected $casts = [
         'id' => 'int',

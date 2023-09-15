@@ -15,6 +15,7 @@ return new class extends Migration
             $table->foreignId('day_id')->constrained('filament_opening_hours_days');
             $table->time('start');
             $table->time('end');
+            $table->string('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

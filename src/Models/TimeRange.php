@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * @property DateTimeInterface $start
  * @property DateTimeInterface $end
+ * @property string $description
  * @property-read string $notation
  */
 final class TimeRange extends Model
@@ -20,7 +21,7 @@ final class TimeRange extends Model
 
     protected $table = 'filament_opening_hours_time_ranges';
 
-    protected $fillable = ['start', 'end'];
+    protected $fillable = ['start', 'end', 'description'];
 
     protected $casts = [
         'id' => 'int',

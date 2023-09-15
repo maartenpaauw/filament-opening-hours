@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Maartenpaauw\Filament\OpeningHours\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 use Maartenpaauw\Filament\OpeningHours\Models\TimeRange;
 
 final class TimeRangeFactory extends Factory
@@ -22,6 +23,7 @@ final class TimeRangeFactory extends Factory
         return [
             'start' => sprintf('%02d:%02d', $startHour, $startMinute),
             'end' => sprintf('%02d:%02d', $endHour, $endMinute),
+            'description' => Str::limit($this->faker->text(), 250),
         ];
     }
 }

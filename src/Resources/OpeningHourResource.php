@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Maartenpaauw\Filament\OpeningHours\Resources;
 
+use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
@@ -57,6 +58,11 @@ final class OpeningHourResource extends Resource
                     'day' => $day,
                 ])
                 ->schema([
+                    TextInput::make('description')
+                        ->label('filament-opening-hours::labels.description')
+                        ->translateLabel()
+                        ->minLength(1)
+                        ->maxLength(255),
                     Repeater::make('timeRanges')
                         ->label('filament-opening-hours::labels.time_ranges')
                         ->addActionLabel(trans('filament-opening-hours::labels.add_time_range'))
@@ -64,20 +70,25 @@ final class OpeningHourResource extends Resource
                         ->relationship()
                         ->defaultItems(1)
                         ->minItems(0)
-                        ->columns(2)
                         ->schema([
-                            TimePicker::make('start')
-                                ->label('filament-opening-hours::labels.start')
+                            TextInput::make('description')
+                                ->label('filament-opening-hours::labels.description')
                                 ->translateLabel()
-                                ->inlineLabel()
-                                ->seconds(false)
-                                ->required(),
-                            TimePicker::make('end')
-                                ->label('filament-opening-hours::labels.end')
-                                ->translateLabel()
-                                ->inlineLabel()
-                                ->seconds(false)
-                                ->required(),
+                                ->minLength(1)
+                                ->maxLength(255),
+                            Grid::make()
+                                ->schema([
+                                    TimePicker::make('start')
+                                        ->label('filament-opening-hours::labels.start')
+                                        ->translateLabel()
+                                        ->seconds(false)
+                                        ->required(),
+                                    TimePicker::make('end')
+                                        ->label('filament-opening-hours::labels.end')
+                                        ->translateLabel()
+                                        ->seconds(false)
+                                        ->required(),
+                                ]),
                         ]),
                 ]),
         ];
