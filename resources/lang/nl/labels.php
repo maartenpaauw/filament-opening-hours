@@ -12,4 +12,5 @@ return [
     'name' => 'Naam',
     'start' => 'Start',
     'time_ranges' => 'Tijdsbereiken',
+    'exceptions' => 'Uitzonderingen',
 ];

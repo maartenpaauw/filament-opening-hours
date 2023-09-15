@@ -76,6 +76,12 @@ final class OpeningHour extends Model
             );
     }
 
+    public function exceptions(): HasMany
+    {
+        return $this->hasMany(Exception::class)
+            ->orderBy('date');
+    }
+
     public function openingHours(): OpeningHours
     {
         return OpeningHours::create(

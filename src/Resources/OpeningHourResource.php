@@ -35,6 +35,7 @@ final class OpeningHourResource extends Resource
             ->schema([
                 Tabs::make('opening-hours')
                     ->id('opening-hours')
+                    ->persistTabInQueryString()
                     ->tabs([
                         Tab::make('general')
                             ->id('general')
@@ -56,8 +57,11 @@ final class OpeningHourResource extends Resource
                         self::dayTab(Day::Friday),
                         self::dayTab(Day::Saturday),
                         self::dayTab(Day::Sunday),
-                    ])
-                    ->persistTabInQueryString(),
+                        Tab::make('exceptions')
+                            ->label('filament-opening-hours::labels.exceptions')
+                            ->translateLabel()
+                            ->icon('heroicon-o-exclamation-triangle'),
+                    ]),
             ])
             ->columns(1);
     }

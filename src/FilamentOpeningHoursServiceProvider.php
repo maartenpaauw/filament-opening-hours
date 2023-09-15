@@ -10,6 +10,7 @@ use Filament\Support\Facades\FilamentIcon;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Filesystem\Filesystem;
 use Maartenpaauw\Filament\OpeningHours\Models\Day;
+use Maartenpaauw\Filament\OpeningHours\Models\Exception;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -51,6 +52,7 @@ final class FilamentOpeningHoursServiceProvider extends PackageServiceProvider
     {
         Relation::morphMap([
             'day' => Day::class,
+            'exception' => Exception::class,
         ]);
     }
 
@@ -124,6 +126,7 @@ final class FilamentOpeningHoursServiceProvider extends PackageServiceProvider
     {
         return [
             'create_opening_hours_table',
+            'create_opening_hours_exceptions_table',
             'create_opening_hours_days_table',
             'create_opening_hours_time_ranges_table',
         ];

@@ -12,4 +12,5 @@ return [
     'name' => 'Name',
     'start' => 'Start',
     'time_ranges' => 'Time ranges',
+    'exceptions' => 'Exceptions',
 ];
