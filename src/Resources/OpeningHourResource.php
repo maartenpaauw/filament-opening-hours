@@ -29,6 +29,16 @@ final class OpeningHourResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name';
 
+    public static function getModelLabel(): string
+    {
+        return trans('filament-opening-hours::labels.opening_hour');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return trans('filament-opening-hours::labels.opening_hours');
+    }
+
     public static function form(Form $form): Form
     {
         return $form

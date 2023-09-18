@@ -8,9 +8,11 @@ return [
     'days' => 'Dagen',
     'description' => 'Omschrijving',
     'end' => 'Eind',
+    'exceptions' => 'Uitzonderingen',
     'general' => 'Algemeen',
     'name' => 'Naam',
+    'opening_hour' => 'Openingstijd',
+    'opening_hours' => 'Openingstijden',
     'start' => 'Start',
     'time_ranges' => 'Tijdsbereiken',
-    'exceptions' => 'Uitzonderingen',
 ];
